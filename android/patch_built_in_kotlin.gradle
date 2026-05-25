@@ -1,5 +1,5 @@
-// Removes legacy kotlin-android from Flutter plugin build.gradle files so Flutter
-// can apply KGP once at configure time (silences the KGP migration warning).
+// Removes legacy kotlin-android declarations from Flutter plugin build.gradle files.
+// Flutter then applies KGP once at configure time, which silences the migration warning.
 // See: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin
 
 import groovy.json.JsonSlurper
@@ -15,17 +15,10 @@ def patchBuildFile = { File buildFile ->
         return
     }
 
+    // Remove explicit KGP application only; keep kotlinOptions for JVM target.
     text = text.replaceAll(/apply plugin: ['"]kotlin-android['"]\s*\n?/, '')
     text = text.replaceAll(/\s*id\("kotlin-android"\)\s*\n?/, '')
     text = text.replaceAll(/\s*id 'kotlin-android'\s*\n?/, '')
-    text = text.replaceAll(/\s*kotlinOptions\s*\{[^}]*\}/, '')
-
-    if (buildFile.name.endsWith('.gradle') && !text.contains('kotlin {')) {
-        text = text.replaceFirst(
-            /(\n)(android\s*\{)/,
-            '$1kotlin {\n    compilerOptions {\n        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17\n    }\n}\n\n$2'
-        )
-    }
 
     buildFile.setText("${marker}\n${text}", 'UTF-8')
 }

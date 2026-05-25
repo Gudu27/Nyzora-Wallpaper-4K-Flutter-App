@@ -39,10 +39,41 @@ class WallpaperRepositoryImpl implements WallpaperRepository {
   final WallhavenService _wallhavenDetail;
   final PeapixService _peapix;
 
+  Future<void> _appendUnsplashForCategory({
+    required List<WallpaperEntity> results,
+    required CategoryEntity category,
+    required int page,
+  }) async {
+    if (category.unsplashTopic != null) {
+      try {
+        final photos = await _unsplash.getTopicPhotos(
+          slug: category.unsplashTopic!,
+          page: page,
+        );
+        results.addAll(photos.map((e) => e.toEntity()));
+        return;
+      } on DioException {
+        // Topic slug invalid or unavailable — fall back to search.
+      }
+    }
+
+    try {
+      final (photos, _) = await _unsplashSearch.searchPhotos(
+        query: category.wallhavenQuery,
+        page: page,
+      );
+      results.addAll(photos.map((e) => e.toEntity()));
+    } on DioException {
+      // Ignore; Wallhaven results may already be present.
+    }
+  }
+
   Future<Either<Failure, T>> _guard<T>(Future<T> Function() fn) async {
     try {
       final result = await fn();
       return Right(result);
+    } on AppException catch (e) {
+      return Left(ServerFailure(e.message));
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionTimeout ||
           e.type == DioExceptionType.receiveTimeout) {
@@ -118,16 +149,28 @@ class WallpaperRepositoryImpl implements WallpaperRepository {
       if (filter == SearchSourceFilter.all ||
           filter == SearchSourceFilter.unsplash) {
         if (ApiConstants.unsplashKey.isNotEmpty) {
-          final (photos, _) =
-              await _unsplashSearch.searchPhotos(query: query, page: page);
-          results.addAll(photos.map((e) => e.toEntity()));
+          try {
+            final (photos, _) =
+                await _unsplashSearch.searchPhotos(query: query, page: page);
+            results.addAll(photos.map((e) => e.toEntity()));
+          } on DioException {
+            // Continue with other sources when Unsplash fails.
+          }
         }
       }
 
       if (filter == SearchSourceFilter.all ||
           filter == SearchSourceFilter.wallhaven) {
-        final (items, _) = await _wallhaven.search(q: query, page: page);
-        results.addAll(items.map((e) => e.toEntity()));
+        try {
+          final (items, _) = await _wallhaven.search(q: query, page: page);
+          results.addAll(items.map((e) => e.toEntity()));
+        } on DioException {
+          // Continue when Wallhaven fails if Unsplash already returned data.
+        }
+      }
+
+      if (results.isEmpty) {
+        throw const AppException('No results found for this search.');
       }
 
       return results;
@@ -148,21 +191,28 @@ class WallpaperRepositoryImpl implements WallpaperRepository {
         CategorySort.random => 'random',
       };
 
-      final (whItems, _) = await _wallhaven.search(
-        q: category.wallhavenQuery,
-        sorting: sorting,
-        page: page,
-        seed: sort == CategorySort.random ? category.id : null,
-      );
-      results.addAll(whItems.map((e) => e.toEntity()));
+      try {
+        final (whItems, _) = await _wallhaven.search(
+          q: category.wallhavenQuery,
+          sorting: sorting,
+          page: page,
+          seed: sort == CategorySort.random ? category.id : null,
+        );
+        results.addAll(whItems.map((e) => e.toEntity()));
+      } on DioException {
+        // Unsplash fallback below may still populate results.
+      }
 
-      if (category.unsplashTopic != null &&
-          ApiConstants.unsplashKey.isNotEmpty) {
-        final photos = await _unsplash.getTopicPhotos(
-          slug: category.unsplashTopic!,
+      if (ApiConstants.unsplashKey.isNotEmpty) {
+        await _appendUnsplashForCategory(
+          results: results,
+          category: category,
           page: page,
         );
-        results.addAll(photos.map((e) => e.toEntity()));
+      }
+
+      if (results.isEmpty) {
+        throw const AppException('No wallpapers found for this category.');
       }
 
       return results;

@@ -23,7 +23,7 @@ class TrendingRow extends ConsumerWidget {
       children: [
         SectionHeader(
           title: 'Trending Now',
-          onSeeAll: () => ref.read(trendingProvider.notifier).refresh(),
+          onSeeAll: () => context.pushNamed(AppRoutes.trendingAll),
         ),
         async.when(
           loading: () => SizedBox(

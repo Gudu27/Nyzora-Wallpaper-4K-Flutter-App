@@ -9,6 +9,7 @@ abstract final class AppRoutes {
   static const String favorites = 'favorites';
   static const String categoryDetail = 'categoryDetail';
   static const String wallpaperDetail = 'wallpaperDetail';
+  static const String trendingAll = 'trendingAll';
   static const String settings = 'settings';
   static const String webview = 'webview';
 
@@ -19,6 +20,7 @@ abstract final class AppRoutes {
   static const String searchPath = '/search';
   static const String categoriesPath = '/categories';
   static const String favoritesPath = '/favorites';
+  static const String trendingAllPath = '/trending';
   static const String settingsPath = '/settings';
   static const String webviewPath = '/webview';
 

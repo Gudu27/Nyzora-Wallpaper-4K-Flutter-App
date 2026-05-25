@@ -1,8 +1,8 @@
+import 'package:wallie_4k_wallpapers/core/constants/app_env.dart';
+
 abstract final class ApiConstants {
-  static const String unsplashKey =
-      String.fromEnvironment('UNSPLASH_KEY', defaultValue: '');
-  static const String wallhavenKey =
-      String.fromEnvironment('WALLHAVEN_KEY', defaultValue: '');
+  static String get unsplashKey => AppEnv.unsplashKey;
+  static String get wallhavenKey => AppEnv.wallhavenKey;
 
   static const String unsplashBaseUrl = 'https://api.unsplash.com';
   static const String wallhavenBaseUrl = 'https://wallhaven.cc/api/v1';

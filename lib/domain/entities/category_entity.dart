@@ -62,7 +62,6 @@ class CategoryEntity {
           emoji: '🌌',
           gradientKey: 'space',
           wallhavenQuery: 'space galaxy',
-          unsplashTopic: 'space',
         ),
         CategoryEntity(
           id: 'abstract',
@@ -102,7 +101,6 @@ class CategoryEntity {
           emoji: '◻️',
           gradientKey: 'minimal',
           wallhavenQuery: 'minimal simple',
-          unsplashTopic: 'minimal',
         ),
         CategoryEntity(
           id: 'dark',
@@ -110,7 +108,6 @@ class CategoryEntity {
           emoji: '🌑',
           gradientKey: 'dark',
           wallhavenQuery: 'dark black',
-          unsplashTopic: 'black-and-white',
         ),
         CategoryEntity(
           id: 'neon',
@@ -118,7 +115,7 @@ class CategoryEntity {
           emoji: '✨',
           gradientKey: 'neon',
           wallhavenQuery: 'neon cyberpunk',
-          unsplashTopic: 'night',
+          unsplashTopic: 'experimental',
         ),
         CategoryEntity(
           id: 'architecture',
@@ -150,7 +147,6 @@ class CategoryEntity {
           emoji: '🌸',
           gradientKey: 'flowers',
           wallhavenQuery: 'flowers floral',
-          unsplashTopic: 'flowers',
         ),
         CategoryEntity(
           id: 'cars',
@@ -158,7 +154,6 @@ class CategoryEntity {
           emoji: '🚗',
           gradientKey: 'cars',
           wallhavenQuery: 'cars automotive',
-          unsplashTopic: 'cars',
         ),
         CategoryEntity(
           id: 'japanese',
@@ -166,7 +161,6 @@ class CategoryEntity {
           emoji: '🎌',
           gradientKey: 'japanese',
           wallhavenQuery: 'japan anime',
-          unsplashTopic: 'japan',
         ),
         CategoryEntity(
           id: 'patterns',
@@ -182,7 +176,6 @@ class CategoryEntity {
           emoji: '⛈️',
           gradientKey: 'weather',
           wallhavenQuery: 'storm clouds weather',
-          unsplashTopic: 'weather',
         ),
         CategoryEntity(
           id: 'sunsets',
@@ -190,7 +183,6 @@ class CategoryEntity {
           emoji: '🌅',
           gradientKey: 'sunsets',
           wallhavenQuery: 'sunset golden hour',
-          unsplashTopic: 'sunsets',
         ),
       ];
 }

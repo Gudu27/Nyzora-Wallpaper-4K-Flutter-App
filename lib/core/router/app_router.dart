@@ -10,6 +10,7 @@ import 'package:wallie_4k_wallpapers/presentation/screens/categories/category_de
 import 'package:wallie_4k_wallpapers/presentation/screens/detail/wallpaper_detail_screen.dart';
 import 'package:wallie_4k_wallpapers/presentation/screens/favorites/favorites_screen.dart';
 import 'package:wallie_4k_wallpapers/presentation/screens/home/home_screen.dart';
+import 'package:wallie_4k_wallpapers/presentation/screens/home/trending_all_screen.dart';
 import 'package:wallie_4k_wallpapers/presentation/screens/main_shell/main_shell.dart';
 import 'package:wallie_4k_wallpapers/presentation/screens/no_internet/no_internet_screen.dart';
 import 'package:wallie_4k_wallpapers/presentation/screens/onboarding/onboarding_screen.dart';
@@ -134,6 +135,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             ),
           ),
         ],
+      ),
+      GoRoute(
+        name: AppRoutes.trendingAll,
+        path: AppRoutes.trendingAllPath,
+        pageBuilder: (context, state) =>
+            _fadeScalePage(child: const TrendingAllScreen()),
       ),
       GoRoute(
         name: AppRoutes.categoryDetail,
