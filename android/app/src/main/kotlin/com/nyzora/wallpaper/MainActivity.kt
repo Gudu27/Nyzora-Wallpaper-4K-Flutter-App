@@ -1,4 +1,4 @@
-package com.wallie.wallpapers
+package com.nyzora.wallpaper
 
 import android.app.WallpaperManager
 import android.graphics.BitmapFactory
@@ -8,7 +8,7 @@ import io.flutter.plugin.common.MethodChannel
 import java.io.File
 
 class MainActivity : FlutterActivity() {
-    private val channelName = "com.wallie.wallpapers/wallpaper"
+    private val channelName = "com.nyzora.wallpaper/wallpaper"
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)

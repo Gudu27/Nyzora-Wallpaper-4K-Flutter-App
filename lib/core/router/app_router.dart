@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wallie_4k_wallpapers/core/constants/app_constants.dart';
 import 'package:wallie_4k_wallpapers/core/router/app_routes.dart';
 import 'package:wallie_4k_wallpapers/domain/entities/category_entity.dart';
 import 'package:wallie_4k_wallpapers/domain/entities/wallpaper_entity.dart';
@@ -70,7 +71,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     initialLocation: AppRoutes.splashPath,
     redirect: (context, state) {
       final uri = state.uri;
-      if (uri.scheme == 'wallie' && uri.host == 'wallpapers') {
+      if (uri.scheme == AppConstants.deepLinkScheme &&
+          uri.host == AppConstants.deepLinkHost) {
         if (uri.pathSegments.length >= 2 && uri.pathSegments.first == 'detail') {
           return AppRoutes.detailPath(uri.pathSegments[1]);
         }

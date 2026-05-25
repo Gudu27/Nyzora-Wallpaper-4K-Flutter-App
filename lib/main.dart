@@ -47,7 +47,7 @@ Future<void> main() async {
         favoritesBoxProvider.overrideWithValue(favoritesBox),
         wallpaperRepositoryProvider.overrideWithValue(repository),
       ],
-      child: const WallieApp(),
+      child: const NyzoraApp(),
     ),
   );
 }

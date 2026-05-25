@@ -1,7 +1,15 @@
 abstract final class AppConstants {
-  static const String appName = 'Wallie 4K Wallpapers';
+  static const String appName = 'Nyzora Wallpaper 4K';
   static const String appTagline = 'Walls That Speak';
-  static const String packageName = 'com.wallie.wallpapers';
+  static const String packageName = 'com.nyzora.wallpaper';
+
+  /// Android MethodChannel for setting device wallpaper.
+  static const String wallpaperMethodChannel =
+      'com.nyzora.wallpaper/wallpaper';
+
+  /// Deep link scheme: nyzora://wallpaper/...
+  static const String deepLinkScheme = 'nyzora';
+  static const String deepLinkHost = 'wallpaper';
 
   static const String hiveFavoritesBox = 'favorites_box';
   static const String hiveRecentSearchesBox = 'recent_searches_box';
@@ -20,7 +28,7 @@ abstract final class AppConstants {
   static const String privacyPolicyUrl =
       'https://www.example.com/privacy-policy';
   static const String playStoreUrl =
-      'https://play.google.com/store/apps/details?id=com.wallie.wallpapers';
+      'https://play.google.com/store/apps/details?id=com.nyzora.wallpaper';
 
   static const List<String> trendingSearchTags = [
     'space',
@@ -37,7 +45,7 @@ abstract final class AppConstants {
     'cars',
   ];
 
-  static const String downloadFolderName = 'Wallie4KWallpapers';
+  static const String downloadFolderName = 'NyzoraWallpaper4K';
 
   static const List<String> downloadQualityOptions = [
     'HD 720p',

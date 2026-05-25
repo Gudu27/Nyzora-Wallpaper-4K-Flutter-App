@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
 
     <application
-        android:label="Wallie 4K Wallpapers"
+        android:label="Nyzora Wallpaper 4K"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -32,7 +32,7 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="wallie" android:host="wallpapers"/>
+                <data android:scheme="nyzora" android:host="wallpaper"/>
             </intent-filter>
         </activity>
         <meta-data

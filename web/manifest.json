@@ -1,11 +1,11 @@
 {
-    "name": "wallie_4k_wallpapers",
-    "short_name": "wallie_4k_wallpapers",
+    "name": "Nyzora Wallpaper 4K",
+    "short_name": "Nyzora",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Nyzora Wallpaper 4K — Premium HD & 4K wallpaper app.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,4 +1,4 @@
-# Wallie 4K Wallpapers
+# Nyzora Wallpaper 4K
 
 Premium HD & 4K wallpaper app for Android and iOS. Tagline: **Walls That Speak**.
 
@@ -43,4 +43,4 @@ Before submission:
 
 ## Package
 
-`com.wallie.wallpapers`
+`com.nyzora.wallpaper`

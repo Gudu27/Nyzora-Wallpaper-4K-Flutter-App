@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.wallie.wallpapers"
+    namespace = "com.nyzora.wallpaper"
     compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.wallie.wallpapers"
+        applicationId = "com.nyzora.wallpaper"
         minSdk = flutter.minSdkVersion
         targetSdk = 35
         versionCode = flutter.versionCode

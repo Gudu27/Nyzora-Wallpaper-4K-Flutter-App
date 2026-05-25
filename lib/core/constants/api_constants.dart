@@ -12,7 +12,7 @@ abstract final class ApiConstants {
       'https://peapix.com/spotlight/feed?n=10';
 
   static const String unsplashAcceptVersion = 'v1';
-  static const String appUtmSource = 'wallie_4k_wallpapers';
+  static const String appUtmSource = 'nyzora_wallpaper_4k';
 
   static const int defaultPerPage = 20;
   static const int trendingPerPage = 15;

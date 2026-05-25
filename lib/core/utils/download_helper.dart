@@ -77,7 +77,7 @@ abstract final class DownloadHelper {
 
     final ext = url.contains('.png') ? 'png' : 'jpg';
     final fileName =
-        'wallie_${wallpaper.id.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '_')}.$ext';
+        'nyzora_${wallpaper.id.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '_')}.$ext';
 
     return downloadToTemp(
       url: url,

@@ -5,8 +5,8 @@ import 'package:wallie_4k_wallpapers/core/theme/app_theme.dart';
 import 'package:wallie_4k_wallpapers/core/theme/theme_provider.dart';
 import 'package:wallie_4k_wallpapers/core/widgets/loading_overlay.dart';
 
-class WallieApp extends ConsumerWidget {
-  const WallieApp({super.key});
+class NyzoraApp extends ConsumerWidget {
+  const NyzoraApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,7 +14,7 @@ class WallieApp extends ConsumerWidget {
     final router = ref.watch(appRouterProvider);
 
     return MaterialApp.router(
-      title: 'Wallie 4K Wallpapers',
+      title: 'Nyzora Wallpaper 4K',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(amoled: themeSettings.amoled),
