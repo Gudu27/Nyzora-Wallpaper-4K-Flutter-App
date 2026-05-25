@@ -1,0 +1,3 @@
+# Optional overrides for dependency conflicts (see master prompt file #02).
+dependency_overrides:
+  http: ^1.2.2
