@@ -27,6 +27,20 @@ Optional dev keys file (gitignored): `lib/core/constants/env.dart`
 
 ## Release (Play Store)
 
+Signing uses `android/keystore.properties` and `android/nyzora-wallpaper-production.keystore` (gitignored). After those files exist:
+
+```bash
+# AAB (Play Store upload)
+cd android && ./gradlew :app:bundleRelease && cd ..
+# Output: build/app/outputs/bundle/release/app-release.aab
+
+# APK (local testing)
+cd android && ./gradlew :app:assembleRelease && cd ..
+# Output: build/app/outputs/apk/release/app-release.apk
+```
+
+Or via Flutter (requires Android cmdline-tools for AAB symbol check):
+
 ```bash
 flutter build appbundle --release \
   --dart-define=UNSPLASH_KEY=your_key \
