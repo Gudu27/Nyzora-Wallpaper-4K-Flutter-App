@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatform, kIsWeb;
 import 'package:gal/gal.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:wallie_4k_wallpapers/core/constants/app_constants.dart';
@@ -51,6 +51,12 @@ abstract final class DownloadHelper {
   static Future<bool> saveToGallery(String filePath) async {
     if (kIsWeb) return false;
     try {
+      if (defaultTargetPlatform == TargetPlatform.iOS) {
+        if (!await Gal.hasAccess(toAlbum: true)) {
+          await Gal.requestAccess(toAlbum: true);
+        }
+      }
+
       await Gal.putImage(
         filePath,
         album: AppConstants.downloadFolderName,
